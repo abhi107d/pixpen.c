@@ -9,7 +9,7 @@
 $ make			//BUILD FILE
 $ make clean	//DELETE BUILD
 $ ./test        //RUN FILE
-
+```
 
 
 ## Gallery
