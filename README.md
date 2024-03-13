@@ -14,9 +14,9 @@ $ ./test        //RUN FILE
 
 ## Gallery
 
-![rectangle] (./images/rectangle.png)
-![circle]	(./images/circle.png)
-![line grid] (./images/grid.png)	
+![rectangle](./images/rectangle.png)
+![circle](./images/circle.png)
+![lines](./images/grid.png)	
 
 
 
