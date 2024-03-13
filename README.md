@@ -1,4 +1,4 @@
-#	**PIXPEN.H**
+#	**pixpen.h**
 
 *simple graphic library in c
 
