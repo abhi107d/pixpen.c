@@ -91,7 +91,35 @@ void fill_circle(uint32_t *image,uint32_t color,int x,int y,int r,size_t sw,size
 	}
 }
 
+
+
 //draw rect
+//
+//draw a rectangel
+void draw_rect(uint32_t *image,uint32_t color,int x,int y,size_t w,size_t h,size_t sw,size_t sh){
+	int SIZE=sw*sh;
+	for(size_t i=0;i<h;i++){
+		int y0=y+i;
+		int idx1=y0*(int)sw+x;
+		int idx2=y0*(int)sw+x+w;
+		
+		if(idx1<SIZE && idx1>=0)image[idx1]=color;
+		if(idx2<SIZE && idx2>=0)image[idx2]=color;
+		
+	}
+	for(size_t i=0;i<w;i++){
+		int x0=x+i;
+		int idx1=y*(int)sw+x0;
+		int idx2=(y+h)*(int)sw+x0;
+		
+		if(idx1<SIZE && idx1>=0)image[idx1]=color;
+		if(idx2<SIZE && idx2>=0)image[idx2]=color;
+
+	}
+}
+
+		
+//fill a rectangel
 void fill_rect(uint32_t *image,uint32_t color,int x,int y,size_t w,size_t h,size_t sw,size_t sh){
 	for(size_t i=0;i<h;i++){
 		int y0=y+i;
@@ -103,7 +131,7 @@ void fill_rect(uint32_t *image,uint32_t color,int x,int y,size_t w,size_t h,size
 		}
 	}
 }
-
+//**
 
 //fill the background
 void fill_bg(uint32_t *image,uint32_t color,size_t width,size_t height){
