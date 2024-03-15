@@ -4,6 +4,7 @@
 #include<stdlib.h>
 void draw_line(uint32_t *image,uint32_t color,int x0,int y0,int xe,int ye,size_t sw,size_t sh);
 void fill_circle(uint32_t *image,uint32_t color,int x,int y,int r,size_t sw,size_t sh);
+void draw_circle(uint32_t *image,uint32_t color,int x,int y,int r,size_t sw,size_t sh);
 void fill_rect(uint32_t *image,uint32_t color,int x,int y,size_t w,size_t h,size_t sw,size_t sh);
 void draw_rect(uint32_t *image,uint32_t color,int x,int y,size_t w,size_t h,size_t sw,size_t sh);
 void fill_bg(uint32_t *image,uint32_t color,size_t width,size_t height);

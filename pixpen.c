@@ -67,9 +67,42 @@ void draw_line(uint32_t *image,uint32_t color,int x0,int y0,int xe,int ye,size_t
 
 
 
+//draw circle
+//bresenhams circle 
+void draw_circle(uint32_t *image,uint32_t color,int x,int y,int r,size_t sw,size_t sh){
+	int p=3-2*r;
+	int x0=0;
+	int y0=r;
+	while(y0>x0){
+		if(p>0){
+			p=p+4*(x0-y0)+10;
+			y0=y0-1;
+		}
+		else{
+			p=p+4*x0+6;
+		}
+		x0=x0+1;
 
-
-
+		int	arr[8][2]={
+			{x0+x,y0+y},
+			{y0+x,x0+y},
+			{-x0+x,y0+y},
+			{y0+x,-x0+y},
+			{-y0+x,x0+y},
+			{x0+x,-y0+y},
+			{-x0+x,-y0+y},
+			{-y0+x,-x0+y}
+		};
+		
+	
+		for(int i=0;i<8;i++){
+				if(arr[i][0]>=0 && arr[i][1]>=0 && arr[i][0]<(int)sw && arr[i][1]<(int)sh){
+						image[(arr[i][1]*(int)sw+arr[i][0])]=color;
+				}
+		}
+	}
+}
+		
 
 
 //fill circle
@@ -95,7 +128,7 @@ void fill_circle(uint32_t *image,uint32_t color,int x,int y,int r,size_t sw,size
 
 //draw rect
 //
-//draw a rectangel
+//draw a rectangle
 void draw_rect(uint32_t *image,uint32_t color,int x,int y,size_t w,size_t h,size_t sw,size_t sh){
 	int SIZE=sw*sh;
 	for(size_t i=0;i<h;i++){
@@ -119,7 +152,7 @@ void draw_rect(uint32_t *image,uint32_t color,int x,int y,size_t w,size_t h,size
 }
 
 		
-//fill a rectangel
+//fill a rectangle
 void fill_rect(uint32_t *image,uint32_t color,int x,int y,size_t w,size_t h,size_t sw,size_t sh){
 	for(size_t i=0;i<h;i++){
 		int y0=y+i;
