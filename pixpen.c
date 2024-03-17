@@ -31,17 +31,15 @@ void sort_points(int* x1,int* y1,int *x2,int * y2,int* x3,int* y3){
 
 
 //line eqn
-void line(int x1,int y1,int x2,int y2,float *k,float *b){
+void line(int x1,int y1,int x2,int y2,float *k){
 	int dx=x2-x1;
 	int dy=y2-y1;
 
 	if(dy==0){
-		*k=0;
-		*b=(float)x2;
+		return;
 	}
 	
 	*k=(float)dx/(float)dy;
-	*b=(float)x1-(float)y1*(*k);
 
 
 }
@@ -55,39 +53,40 @@ void fill_triangle(uint32_t *image,uint32_t color,size_t sw,size_t sh,
 	sort_points(&x1,&y1,&x2,&y2,&x3,&y3);
 
 
-	float m23,b23;
-	float m12,b12;
-	float m13,b13;
-	line(x1,y1,x2,y2,&m12,&b12);
-	line(x1,y1,x3,y3,&m13,&b13);
-	line(x2,y2,x3,y3,&m23,&b23);
-
+	float m23;
+	float m12;
+	float m13;
+	line(x1,y1,x2,y2,&m12);
+	line(x1,y1,x3,y3,&m13);
+	line(x2,y2,x3,y3,&m23);
+	float p1=(float)x1;
+	float p2=(float)x1;
+	if(y1==y2)p2=x2;
 	for(int i=y1;i<=y3;i++){
-		float sp=m13*(float)i+b13;
-		float ep;
-		if(i<=y2)ep=m12*(float)i+b12;
-		else ep=m23*i+b23;
-
+	
+	
+		int ep=(int)p2;
+		int sp=(int)p1;
 		if(sp>ep)swap(float,sp,ep);
-		for(int j=(int)sp;j<=(int)ep;j++){
+		for(int j=sp;j<=ep;j++){
 			int indx=i*(int)sw+j;
 			if(indx>=0 && indx<(int)sw*(int)sh)image[indx]=color;
 		}
+		p1=p1+m13;
+		if(i<y2){
+			p2=p2+m12;
+		}
+		else {
+			p2=p2+m23;
+		}
+
+
 	}
 
 	
 
 
 }
-
-
-
-
-
-
-
-
-
 
 
 
