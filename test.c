@@ -19,25 +19,25 @@ int main(){
 	//*
 	//*
 	//draw line 
-	draw_line(image,0xFFFF00FF,50,0,150,70,WIDTH,HEIGHT);
+	/* draw_line(image,0xFFFF00FF,50,0,150,70,WIDTH,HEIGHT); */
 	//*
 	//rectangle example
-	fill_rect(image,0xFFAAEE00,120,220,100,132,WIDTH,HEIGHT);
+	/* fill_rect(image,0xFFAAEE00,120,220,100,132,WIDTH,HEIGHT); */
 	//*
 	//*
 	//rectangle outline
-	draw_rect(image,0xFF00FF00,70,40,300,170,WIDTH,HEIGHT);
+	/* draw_rect(image,0xFF00FF00,70,40,300,170,WIDTH,HEIGHT); */
 	//*
 	//*
 	//fill circle
-	fill_circle(image,0xFFC0CB,300,240,70,WIDTH,HEIGHT); 
+	/* fill_circle(image,0xFFC0CB,300,240,70,WIDTH,HEIGHT); */ 
 	//*
 	//*
 	//draw circle
-	draw_circle(image, 0xFFFF00FF, 250, 250, 100, WIDTH, HEIGHT);
-
-
-
+	/* draw_circle(image, 0xFFFF00FF, 250, 250, 100, WIDTH, HEIGHT); */
+	//*
+	//*
+	fill_triangle(image,0xFFFF0000,WIDTH,HEIGHT,200,40,200,300,200,150);
 
 
     int status=write(image,WIDTH,HEIGHT,file_path);

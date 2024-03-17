@@ -3,6 +3,97 @@
 #include<stdint.h>
 #include<stdlib.h>
 
+//functions
+#define swap(T,x,y)do{T t=x;x=y;y=t;}while(0) 
+
+
+
+//fill_triangle
+
+
+//sort points
+void sort_points(int* x1,int* y1,int *x2,int * y2,int* x3,int* y3){
+	if(*y1>*y2){
+		swap(int,*x1,*x2);
+		swap(int,*y1,*y2);
+	}
+	if(*y2>*y3){
+		swap(int,*x3,*x2);
+		swap(int,*y3,*y2);
+	}
+	
+	if(*y1>*y2){
+		swap(int,*x1,*x2);
+		swap(int,*y1,*y2);
+	}
+}
+
+
+
+//line eqn
+void line(int x1,int y1,int x2,int y2,float *k,float *b){
+	int dx=x2-x1;
+	int dy=y2-y1;
+
+	if(dy==0){
+		*k=0;
+		*b=(float)x2;
+	}
+	
+	*k=(float)dx/(float)dy;
+	*b=(float)x1-(float)y1*(*k);
+
+
+}
+
+//fill triangle function
+void fill_triangle(uint32_t *image,uint32_t color,size_t sw,size_t sh,
+	int x1,int y1,
+	int x2,int y2,
+	int x3,int y3){
+	
+	sort_points(&x1,&y1,&x2,&y2,&x3,&y3);
+
+
+	float m23,b23;
+	float m12,b12;
+	float m13,b13;
+	line(x1,y1,x2,y2,&m12,&b12);
+	line(x1,y1,x3,y3,&m13,&b13);
+	line(x2,y2,x3,y3,&m23,&b23);
+
+	for(int i=y1;i<=y3;i++){
+		float sp=m13*(float)i+b13;
+		if(i<=y2){
+			float ep=m12*(float)i+b12;
+			if(sp>ep)swap(float,sp,ep);
+			for(int j=(int)sp;j<=(int)ep;j++){
+				image[i*sw+j]=color;
+			}
+		}
+		else{
+			float ep=m23*i+b23;
+			if(sp>ep)swap(float,sp,ep);
+			for(int j=(int)sp;j<=(int)ep;j++){
+					image[i*sw+j]=color;
+			}
+		}
+	}
+
+	
+
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 //line bresenhams
