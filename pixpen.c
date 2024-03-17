@@ -64,19 +64,14 @@ void fill_triangle(uint32_t *image,uint32_t color,size_t sw,size_t sh,
 
 	for(int i=y1;i<=y3;i++){
 		float sp=m13*(float)i+b13;
-		if(i<=y2){
-			float ep=m12*(float)i+b12;
-			if(sp>ep)swap(float,sp,ep);
-			for(int j=(int)sp;j<=(int)ep;j++){
-				image[i*sw+j]=color;
-			}
-		}
-		else{
-			float ep=m23*i+b23;
-			if(sp>ep)swap(float,sp,ep);
-			for(int j=(int)sp;j<=(int)ep;j++){
-					image[i*sw+j]=color;
-			}
+		float ep;
+		if(i<=y2)ep=m12*(float)i+b12;
+		else ep=m23*i+b23;
+
+		if(sp>ep)swap(float,sp,ep);
+		for(int j=(int)sp;j<=(int)ep;j++){
+			int indx=i*(int)sw+j;
+			if(indx>=0 && indx<(int)sw*(int)sh)image[indx]=color;
 		}
 	}
 
