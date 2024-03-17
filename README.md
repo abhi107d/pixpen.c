@@ -15,7 +15,7 @@ $ ./test        //RUN FILE
 ## Gallery
 
 ![rectangle](./images/rectangle.png)
-![no fill rect](./images/draw_rect.png)
+![rectangle (no fill)](./images/draw_rect.png)
 ![circle](./images/circle.png)
 ![lines](./images/grid.png)	
 
