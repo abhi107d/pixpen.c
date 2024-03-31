@@ -52,25 +52,25 @@ int main(){
     p2.x=100;
     p2.y=50;
     p2.z=50;
-    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
+    vec32d(&p1,p2,WIDTH,HEIGHT,theta);
 
 	fill_circle(image,0xFFC0CB,p1.x,p1.y,5,WIDTH,HEIGHT); 
     p2.x=200;
     p2.y=50;
     p2.z=50;
-    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
+    vec32d(&p1,p2,WIDTH,HEIGHT,theta);
 
 	fill_circle(image,0xFFC0CB,p1.x,p1.y,5,WIDTH,HEIGHT); 
     p2.x=100;
     p2.y=200;
     p2.z=50;
-    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
+    vec32d(&p1,p2,WIDTH,HEIGHT,theta);
 
 	fill_circle(image,0xFFC0CB,p1.x,p1.y,5,WIDTH,HEIGHT); 
     p2.x=200;
     p2.y=200;
     p2.z=50;
-    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
+    vec32d(&p1,p2,WIDTH,HEIGHT,theta);
 
 
 
@@ -84,25 +84,25 @@ int main(){
     p2.x=100;
     p2.y=50;
     p2.z=80;
-    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
+    vec32d(&p1,p2,WIDTH,HEIGHT,theta);
 
 	fill_circle(image,0xFFC0CB,p1.x,p1.y,5,WIDTH,HEIGHT); 
     p2.x=200;
     p2.y=50;
     p2.z=80;
-    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
+    vec32d(&p1,p2,WIDTH,HEIGHT,theta);
 
 	fill_circle(image,0xFFC0CB,p1.x,p1.y,5,WIDTH,HEIGHT); 
     p2.x=100;
     p2.y=200;
     p2.z=80;
-    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
+    vec32d(&p1,p2,WIDTH,HEIGHT,theta);
 
 	fill_circle(image,0xFFC0CB,p1.x,p1.y,5,WIDTH,HEIGHT); 
     p2.x=200;
     p2.y=200;
     p2.z=80;
-    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
+    vec32d(&p1,p2,WIDTH,HEIGHT,theta);
 
 
 
