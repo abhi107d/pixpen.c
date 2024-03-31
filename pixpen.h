@@ -3,11 +3,15 @@
 #include<stdint.h>
 #include<stdlib.h>
 //2d____________________________________________________________________________________________
+void draw_line(uint32_t *image,uint32_t color,int x0,int y0,int xe,int ye,size_t sw,size_t sh);
 void fill_triangle(uint32_t *image,uint32_t color,size_t sw,size_t sh,
 	int x1,int y1,
 	int x2,int y2,
 	int x3,int y3);
-void draw_line(uint32_t *image,uint32_t color,int x0,int y0,int xe,int ye,size_t sw,size_t sh);
+void draw_triangle(uint32_t *image,uint32_t color,size_t sw,size_t sh,
+	int x1,int y1,
+	int x2,int y2,
+	int x3,int y3);
 void fill_circle(uint32_t *image,uint32_t color,int x,int y,int r,size_t sw,size_t sh);
 void draw_circle(uint32_t *image,uint32_t color,int x,int y,int r,size_t sw,size_t sh);
 void fill_rect(uint32_t *image,uint32_t color,int x,int y,size_t w,size_t h,size_t sw,size_t sh);

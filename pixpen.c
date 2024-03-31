@@ -12,6 +12,68 @@
 //***********************************************************************************************
 //
 
+//line bresenhams_________________________________________________________________________________
+void draw_line(uint32_t *image,uint32_t color,int x0,int y0,int xe,int ye,size_t sw,size_t sh){
+	int X=x0;
+	int Y=y0;
+
+	int Xe=xe;
+	int Ye=ye;
+ 
+	image[(y0*sw)+x0]=color;
+
+	int flag=0;
+	int dx=abs(xe-x0);
+	int dy=abs(ye-y0);
+	if(dx<dy){
+		flag=1;
+		int temp=dx;
+		dx=dy;
+		dy=temp;
+
+		temp=X;
+		X=Y;
+		Y=temp;
+
+		temp=Xe;
+		Xe=Ye;
+		Ye=temp;
+
+
+	}
+	if(X>Xe){
+		int temp=X;
+		X=Xe;
+		Xe=X;
+		temp=Y;
+		Y=Ye;
+		Ye=temp;
+	}
+
+	
+	int step=dx;
+	int incry=1;
+	if((Ye-Y)<0)incry=-1;
+
+	int p=2*dy-dx;
+	
+	for(int i=0;i<step;i++){
+		X=X+1;
+		if(p<0)p=p+2*dy;
+		else{
+			p=p+2*dy-2*dx;
+			Y=Y+incry;
+		}
+		if(flag){  
+			image[X*sw+Y]=color;
+		}
+		else image[Y*sw+X]=color;
+	}
+}
+
+
+
+
 
 //fill_triangle_________________________________________________________________________________
 //sort points
@@ -86,72 +148,19 @@ void fill_triangle(uint32_t *image,uint32_t color,size_t sw,size_t sh,
 
 	}
 
-	
-
-
 }
 
-
-
-//line bresenhams_________________________________________________________________________________
-void draw_line(uint32_t *image,uint32_t color,int x0,int y0,int xe,int ye,size_t sw,size_t sh){
-	int X=x0;
-	int Y=y0;
-
-	int Xe=xe;
-	int Ye=ye;
- 
-	image[(y0*sw)+x0]=color;
-
-	int flag=0;
-	int dx=abs(xe-x0);
-	int dy=abs(ye-y0);
-	if(dx<dy){
-		flag=1;
-		int temp=dx;
-		dx=dy;
-		dy=temp;
-
-		temp=X;
-		X=Y;
-		Y=temp;
-
-		temp=Xe;
-		Xe=Ye;
-		Ye=temp;
-
-
-	}
-	if(X>Xe){
-		int temp=X;
-		X=Xe;
-		Xe=X;
-		temp=Y;
-		Y=Ye;
-		Ye=temp;
-	}
-
+//draw triangle
+void draw_triangle(uint32_t *image,uint32_t color,size_t sw,size_t sh,
+	int x1,int y1,
+	int x2,int y2,
+	int x3,int y3){
 	
-	int step=dx;
-	int incry=1;
-	if((Ye-Y)<0)incry=-1;
-
-	int p=2*dy-dx;
-	
-	for(int i=0;i<step;i++){
-		X=X+1;
-		if(p<0)p=p+2*dy;
-		else{
-			p=p+2*dy-2*dx;
-			Y=Y+incry;
-		}
-		if(flag){  
-			image[X*sw+Y]=color;
-		}
-		else image[Y*sw+X]=color;
-	}
+	sort_points(&x1,&y1,&x2,&y2,&x3,&y3);
+	draw_line(image,color,x1,y1,x2,y2,sw,sh);
+	draw_line(image,color,x2,y2,x3,y3,sw,sh);
+	draw_line(image,color,x3,y3,x1,y1,sw,sh);
 }
-
 
 
 
