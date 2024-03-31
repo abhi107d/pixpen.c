@@ -21,11 +21,11 @@ int main(){
 	//draw line 
 	/* draw_line(image,0xFFFF00FF,50,0,150,70,WIDTH,HEIGHT); */
 	//*
-	//rectangle example
+	//recthetagle example
 	/* fill_rect(image,0xFFAAEE00,120,220,100,132,WIDTH,HEIGHT); */
 	//*
 	//*
-	//rectangle outline
+	//recthetagle outline
 	/* draw_rect(image,0xFF00FF00,70,40,300,170,WIDTH,HEIGHT); */
 	//*
 	//*
@@ -47,13 +47,67 @@ int main(){
 	/* fill_triangle(image,0xFFFF0000,WIDTH,HEIGHT,301,12,69,-156,183,92); */ 
 	vec2d p1;
 	vec3d p2;
+    size_t theta=90;
+	fill_circle(image,0xFFC0CB,p1.x,p1.y,5,WIDTH,HEIGHT); 
+    p2.x=100;
+    p2.y=50;
+    p2.z=50;
+    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
 
-	fill_circle(image,0xFFC0CB,300,240,70,WIDTH,HEIGHT); 
-	fill_circle(image,0xFFC0CB,300,240,70,WIDTH,HEIGHT); 
-	fill_circle(image,0xFFC0CB,300,240,70,WIDTH,HEIGHT); 
-	fill_circle(image,0xFFC0CB,300,240,70,WIDTH,HEIGHT); 
+	fill_circle(image,0xFFC0CB,p1.x,p1.y,5,WIDTH,HEIGHT); 
+    p2.x=200;
+    p2.y=50;
+    p2.z=50;
+    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
 
-	
+	fill_circle(image,0xFFC0CB,p1.x,p1.y,5,WIDTH,HEIGHT); 
+    p2.x=100;
+    p2.y=200;
+    p2.z=50;
+    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
+
+	fill_circle(image,0xFFC0CB,p1.x,p1.y,5,WIDTH,HEIGHT); 
+    p2.x=200;
+    p2.y=200;
+    p2.z=50;
+    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
+
+
+
+
+
+
+
+    
+
+	fill_circle(image,0xFFC0CB,p1.x,p1.y,5,WIDTH,HEIGHT); 
+    p2.x=100;
+    p2.y=50;
+    p2.z=80;
+    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
+
+	fill_circle(image,0xFFC0CB,p1.x,p1.y,5,WIDTH,HEIGHT); 
+    p2.x=200;
+    p2.y=50;
+    p2.z=80;
+    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
+
+	fill_circle(image,0xFFC0CB,p1.x,p1.y,5,WIDTH,HEIGHT); 
+    p2.x=100;
+    p2.y=200;
+    p2.z=80;
+    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
+
+	fill_circle(image,0xFFC0CB,p1.x,p1.y,5,WIDTH,HEIGHT); 
+    p2.x=200;
+    p2.y=200;
+    p2.z=80;
+    vec2d(&p1,p2,WIDTH,HEIGHT,theta);
+
+
+
+
+    
     int status=write(image,WIDTH,HEIGHT,file_path);
 	if(!status){
 		printf("%s SAVED ",file_path);
