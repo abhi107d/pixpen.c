@@ -6,9 +6,14 @@
 //functions
 #define swap(T,x,y)do{T t=x;x=y;y=t;}while(0) 
 
+//**
+//2D section
+//**
+//***********************************************************************************************
+//
 
-//fill_triangle
 
+//fill_triangle_________________________________________________________________________________
 //sort points
 void sort_points(int* x1,int* y1,int *x2,int * y2,int* x3,int* y3){
 	if(*y1>*y2){
@@ -88,7 +93,7 @@ void fill_triangle(uint32_t *image,uint32_t color,size_t sw,size_t sh,
 
 
 
-//line bresenhams
+//line bresenhams_________________________________________________________________________________
 void draw_line(uint32_t *image,uint32_t color,int x0,int y0,int xe,int ye,size_t sw,size_t sh){
 	int X=x0;
 	int Y=y0;
@@ -150,7 +155,7 @@ void draw_line(uint32_t *image,uint32_t color,int x0,int y0,int xe,int ye,size_t
 
 
 
-//draw circle
+//draw circle_________________________________________________________________________________
 //bresenhams circle 
 void draw_circle(uint32_t *image,uint32_t color,int x,int y,int r,size_t sw,size_t sh){
 	int p=3-2*r;
@@ -210,7 +215,7 @@ void fill_circle(uint32_t *image,uint32_t color,int x,int y,int r,size_t sw,size
 
 
 //draw rect
-//
+//_________________________________________________________________________________
 //draw a rectangle
 void draw_rect(uint32_t *image,uint32_t color,int x,int y,size_t w,size_t h,size_t sw,size_t sh){
 	int SIZE=sw*sh;
@@ -247,36 +252,61 @@ void fill_rect(uint32_t *image,uint32_t color,int x,int y,size_t w,size_t h,size
 		}
 	}
 }
-//**
 
+
+
+//**
+//3D section
+//**
+//***********************************************************************************************
+//
 //3d to 2d projection 
 void vec32d(vec2d* p1,vec3d p2,size_t sw,size_t sh,size_t theta){
 	double asp=(double)sh/(double)sw;
 	double din=tan((double)theta/2)*(double)p2.z;		
-	p1->x=(int)(((double)p2.x/din)*asp);		
-	p1->y=(int)((double)p2.y/din);	
+	p1->x=(((double)p2.x/din)*asp);		
+	p1->y=((double)p2.y/din);	
 	//TODO: return vec3d with z ration for color	
+
+}
+//scale 2d vector
+void scale2d(vec2d* p,vec2d s){
+    p->x=p->x*s.x;
+    p->y=p->y*s.y;
+}
+//scale 3d points
+void scale3d(vec3d* p,vec3d s){
+    p->x=p->x*s.x;
+    p->y=p->y*s.y;
+    p->z=p->z*s.z;
+
+}
+
+
+
+//translate 2d points
+void trans2d(vec2d* p,vec2d t){
+    p->x=p->x+t.x;
+    p->y=p->y+t.y;
+}
+//translated 3d points
+void trans3d(vec3d* p,vec3d t){
+    p->x=p->x+t.x;
+    p->y=p->y+t.y;
+    p->z=p->z+t.z;
 
 }
 
 
 
 
-
-
-
-
-
-
-//fill the background
+//fill the background_________________________________________________________________________________
 void fill_bg(uint32_t *image,uint32_t color,size_t width,size_t height){
 	for(size_t i=0;i<width*height;i++){
 		image[i]=color;
 
 	}
 }
-
-
 
 
 //write the buffer
